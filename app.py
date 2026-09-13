@@ -26,11 +26,11 @@ st.subheader("1. Enter Game Details")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    game_name = st.text_input("Game Name", value="Block Puzzle Pro")
+    game_name = st.text_input("Game Name", value="Pure Stride")
 with col2:
-    genre = st.text_input("Genre", value="Puzzle")
+    genre = st.text_input("Genre", value="Hyper-casual")
 with col3:
-    audience = st.text_input("Target Audience", value="Casual commuters aged 25-40")
+    audience = st.text_input("Target Audience", value="Gen Z mobile gamers")
 
 if st.button("🚀 Generate Ad Campaign", type="primary"):
     with st.spinner("Analyzing audience and generating concepts..."):
@@ -57,7 +57,6 @@ if st.button("🚀 Generate Ad Campaign", type="primary"):
 
         st.success(f"Generated successfully! (Data Source: {source})")
         
-        # Display Concepts
         st.subheader("🎯 Ranked Video Ad Scripts")
         for concept in concepts:
             with st.expander(f"Rank #{concept['rank']} | Score: {concept['engagement_score']}/100 — Hook: {concept['hook']}", expanded=True):
@@ -65,11 +64,7 @@ if st.button("🚀 Generate Ad Campaign", type="primary"):
                 st.write(f"**Call To Action:** {concept['call_to_action']}")
                 if concept.get("platform_notes"):
                     st.info(f"**Platform Notes:** {concept['platform_notes']}")
-                
-                bd = concept['score_breakdown']
-                st.caption(f"Score breakdown — Hook length: {bd['hook_length_score']} | Verbs score: {bd['action_verb_score']} | Clarity: {bd['clarity_score']}")
 
-        # Display Copy Variants
         st.subheader("📝 Short-Form Ad Copy Variants")
         v_cols = st.columns(len(variants))
         for idx, (col, var) in enumerate(zip(v_cols, variants), 1):
@@ -79,7 +74,6 @@ if st.button("🚀 Generate Ad Campaign", type="primary"):
                 st.write(var['body'])
                 st.caption(f"CTA: {var['cta']}")
 
-        # Export Buttons
         st.subheader("📥 Export Results")
         json_data = json.dumps(report, indent=2)
         st.download_button("Download JSON Report", data=json_data, file_name="campaign_report.json", mime="application/json")
