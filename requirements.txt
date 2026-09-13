@@ -1,9 +1,3 @@
-# Core dependency: Google's official Gen AI SDK for the Gemini API.
-# (Note: the older "google-generativeai" package was deprecated by Google
-# in favor of this one -- see the README for details.)
 google-genai>=1.0.0
-
-# Optional but recommended: lets you keep GEMINI_API_KEY in a local .env
-# file instead of exporting it in your shell. The script works fine
-# without it -- it's wrapped in a try/except import.
 python-dotenv>=1.0.0
+streamlit>=1.30.0
